@@ -9,7 +9,7 @@ namespace Architecture.Controller
 {
     public class LetterController : DaoElement
     {
-        private int _errorsAmount;
+        public static int _errorsAmount;
         
         public Button buttonNext;
         public GameObject notEnoughErrors;

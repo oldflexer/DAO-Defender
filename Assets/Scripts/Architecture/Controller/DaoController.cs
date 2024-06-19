@@ -5,10 +5,6 @@ namespace Architecture.Controller
 {
     public class DaoController : DaoElement
     {
-        public MenuController menuController;
-        public LevelsController levelsController;
-        public SettingsController settingsController;
-
         public static void OnNotification(string pEventPath, Object pTarget, params object[] pData)
         {
             switch (pEventPath)
@@ -35,6 +31,10 @@ namespace Architecture.Controller
             
                 case DaoNotification.ButtonExitHover:
                     Debug.Log("button hover exit");
+                    break;
+                
+                case DaoNotification.HealthUpdate:
+                    Debug.Log("health update");
                     break;
             }
         }

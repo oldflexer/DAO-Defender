@@ -10,5 +10,8 @@ namespace Architecture
         public const string LevelStart = "level.start";
         
         public const string ViewLoad = "view.load";
+
+        public const string HealthUpdate = "health.update";
+        
     }
 }

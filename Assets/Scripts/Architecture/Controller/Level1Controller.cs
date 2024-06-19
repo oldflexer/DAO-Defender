@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Architecture.Controller
 {
@@ -25,8 +26,7 @@ namespace Architecture.Controller
 
         private void FixedUpdate()
         {
-            var letterController = FindObjectsByType<LetterController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)[0];
-            _errors = letterController.GetErrorsAmount();
+            _errors = LetterController._errorsAmount;
             errorsCounter.text = _errors.ToString();
             errorsString.text = _errors switch
             {
@@ -34,12 +34,13 @@ namespace Architecture.Controller
                 1 => "Ошибку",
                 _ => "Ошибки"
             };
-            
+
             pointsCounter.text = _points.ToString();
         }
 
         public void CheckErrors(int targetErrorsAmount = 0)
         {
+            Debug.Log(_errors);
             if (_isLetterChecked) return;
             
             var letterController =
@@ -97,6 +98,11 @@ namespace Architecture.Controller
             congratulation.gameObject.SetActive(true);
             result.gameObject.SetActive(true);
             result.text = "Твои очки: " + _points;
+        }
+
+        public void FinishLevel()
+        {
+            SceneManager.LoadScene(1);
         }
     }
 }
